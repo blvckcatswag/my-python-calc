@@ -5,6 +5,7 @@ from contextlib import nullcontext as does_not_raise
 
 class TestCalculatorCore:
     # TODO: Написать тесты на функцию сложения и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2, result, expectation",
         [
@@ -15,7 +16,7 @@ class TestCalculatorCore:
             (100, '100', 200, pytest.raises(TypeError)),
         ]
     )
-    def test_addition(self, num1, num2, result, expectation):
+    def test_addition(num1, num2, result, expectation):
         """
             Тестирует функцию addition:
             - Проверяет корректные случаи сложения чисел (целых и с плавающей точкой).
@@ -25,6 +26,7 @@ class TestCalculatorCore:
             assert addition(num1, num2) == result
 
     # TODO: Написать тесты на функцию вычитания и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2, result, expectation",
         [
@@ -36,7 +38,7 @@ class TestCalculatorCore:
         ]
 
     )
-    def test_subtraction(self, num1, num2, result, expectation):
+    def test_subtraction(num1, num2, result, expectation):
         """
             Тестирует функцию subtraction:
             - Проверяет вычитание для целых и вещественных чисел.
@@ -46,6 +48,7 @@ class TestCalculatorCore:
             assert subtraction(num1, num2) == result
 
     # TODO: Написать тесты на функцию умножения и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2, result, expectation",
         [
@@ -55,7 +58,7 @@ class TestCalculatorCore:
             (0, 0, 0, does_not_raise()),
         ]
     )
-    def test_multiplication(self, num1, num2, result, expectation):
+    def test_multiplication(num1, num2, result, expectation):
         """
             Тестирует функцию multiplication:
             - Проверяет корректное умножение.
@@ -65,6 +68,7 @@ class TestCalculatorCore:
             assert multiplication(num1, num2) == result
 
     # TODO: Написать тесты на функцию деления и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2, result, expectation",
         [
@@ -75,7 +79,7 @@ class TestCalculatorCore:
             (10, 2.5, 4, does_not_raise()),
         ]
     )
-    def test_division(self, num1, num2, result, expectation):
+    def test_division(num1, num2, result, expectation):
         """
             Тестирует функцию division:
             - Проверяет деление для чисел.
@@ -86,6 +90,7 @@ class TestCalculatorCore:
             assert division(num1, num2) == result
 
     # TODO: Написать тесты на функцию возведения в степень и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2, result, expectation",
         [
@@ -96,7 +101,7 @@ class TestCalculatorCore:
             (10, 10, 10000000000, does_not_raise()),
         ]
     )
-    def test_exponentiation(self, num1, num2, result, expectation):
+    def test_exponentiation(num1, num2, result, expectation):
         """
            Тестирует функцию exponentiation:
            - Проверяет возведение в степень с положительными и отрицательными числами.
@@ -106,19 +111,20 @@ class TestCalculatorCore:
             assert exponentiation(num1, num2) == result
 
     # TODO: Написать тесты на функцию валидации и добавить докстринг
+    @staticmethod
     @pytest.mark.parametrize(
         "num1, num2,  expectation",
         [
-            (1, 1, does_not_raise()),
-            (0, '', pytest.raises(TypeError)),
-            (-2, 2, does_not_raise()),
-            (10, 0, does_not_raise()),
-            (10, 10, does_not_raise()),
+            (1,    1, does_not_raise()),
+            (0,  '', pytest.raises(TypeError)),
+            (-2,  2, does_not_raise()),
+            (10,  0, does_not_raise()),
+            (10,  10, does_not_raise()),
             (0.5, None, pytest.raises(TypeError)),
             (1, [1, 2, 3], pytest.raises(TypeError)),
         ]
     )
-    def test_validate_numbers(self, num1, num2, expectation):
+    def test_validate_numbers(num1, num2, expectation):
         """
            Тестирует функцию validate_numbers:
            - Проверяет, что функция не вызывает исключения при передаче чисел.
